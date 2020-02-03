@@ -5,6 +5,10 @@ import UsersData from './UsersData';
 class ShowUsers extends React.Component {
   render() {
     const data=this.props.data;
+    if(data==this.props.data)
+    {
+      console.log('Yes');
+    }
     var heading=['id','name','username','email','address','phone','website','company'];
     var head=heading.map((value)=><UsersHeading value={value}/>);
     return (

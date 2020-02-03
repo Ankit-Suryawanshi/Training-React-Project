@@ -21,7 +21,7 @@ class Posts extends React.Component {
     return (
       <div>
         <center>
-          <h1> USERS DATA</h1>
+          <h1> POSTS DATA</h1>
         </center>
         <ShowPost data={this.state.data}/>
       </div>
