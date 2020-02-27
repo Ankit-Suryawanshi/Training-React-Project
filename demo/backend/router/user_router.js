@@ -6,6 +6,10 @@ router.post('/login',UserController.login);
 
 router.post('/signup',UserController.signup);
 
-router.get('/showdata',UserController.showdata);
+router.get('/showdata/:token',UserController.showdata);
+
+router.delete('/deletedata/:token',UserController.deletedata);
+
+router.post('/updatedata',UserController.updatedata);
 
 module.exports = router;

@@ -1,19 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Select, Input, Button, } from 'antd';
+import { Form, Input, Button, } from 'antd';
 import axios from 'axios';
 import '../index.css'
-import Title from 'antd/lib/skeleton/Title';
-const { Option } = Select;
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 5 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 12 },
-  },
-};
 
 export default class Signup extends Component {
     state = {
@@ -41,9 +29,10 @@ export default class Signup extends Component {
             address : this.state.address,
             password : this.state.password
         }
-        //console.log(this.state)
+        console.log(user);
         axios.post('http://localhost:8000/api/signup',{user})
-        .then(res=>{console.log(res);console.log(res.data)})
+        .then(res=>{console.log(res);console.log(res.data)
+        })
         .catch(function(err){
             console.log(err);
         });

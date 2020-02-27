@@ -23,7 +23,16 @@ code {
   left: 45%;
 }
 .signup-div {
-  padding: 15px;
-  margin: 100px;
+  padding: 5px;
+  margin: 10px;
   border: 1px solid black;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  color: white;
+  background-color: #3CBC8D;
+
 }
