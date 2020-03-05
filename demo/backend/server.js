@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const bodyparser = require('body-parser');
 const dbConnection = require('./config/db.js'); 
-let router = require('./router/user_router.js');
+const router = require('./router/user_router.js');
 const config = require('./config/index');
 const uri = config.port;
 app.use(cors());

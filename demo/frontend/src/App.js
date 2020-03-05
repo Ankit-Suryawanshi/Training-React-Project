@@ -6,6 +6,7 @@ import Login from './component/Login';
 import Signup1 from './component/Signup1';
 import Profile from './component/Profile';
 import Update from './component/Update';
+import Registration from './component/Registration';
 function App() {
 	return (
 		<BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
 					<Route path='/Signup1' component={Signup1} />
 					<Route path='/Profile' component={Profile}/>
 					<Route path='/update' component={Update}/>
+					<Route path='/register' component={Registration}/>
 				</Switch>
 			</div>
 		</BrowserRouter>

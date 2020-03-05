@@ -31,11 +31,15 @@ const user = new Schema({
         trim : true,
     },
     hashedPassword : {
-        type : String,
-        required : 'password is required'
+      type : String,
+      required : 'password is required'
     },
     salt : {
-        type : String,
+      type : String,
+    },
+    image : {
+      type : String,
+      required : true
     }
 })
 

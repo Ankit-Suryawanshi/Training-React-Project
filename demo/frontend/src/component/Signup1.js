@@ -8,6 +8,9 @@ import { SignInForm } from './SignInForm';
 class Signup1 extends React.Component {
   handleSignIn = user => {
       console.log(user);
+      console.log(localStorage.getItem('image'));
+      user = {...user,image : localStorage.getItem('image')};
+      localStorage.removeItem('image');
       axios.post('http://localhost:8000/api/signup',{user})
         .then(res=>{console.log(res);
           alert(res.data.message);  

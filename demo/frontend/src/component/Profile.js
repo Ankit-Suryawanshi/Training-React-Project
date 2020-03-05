@@ -6,7 +6,9 @@ import Update from './Update';
 import { Form, Card, Button, Icon, Layout, Row, Col, Avatar, Carousel} from 'antd';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import RegistrationForm from './Registration';
 const { Header, Footer, Content } = Layout;
+const img = '/home/rails/Downloads/bestpeers.png';
 
 export default class Profile extends Component {
     state = {
@@ -27,6 +29,8 @@ export default class Profile extends Component {
 			console.log(this.state.profile_data.email);
 			console.log(this.state.profile_data.contact);
 			console.log(this.state.profile_data.address);
+			console.log(this.state.profile_data.image);
+			
         })
         .catch(function(err){
 			alert('LogIn to show Profile!!');
@@ -40,8 +44,7 @@ export default class Profile extends Component {
 		//console.log(localStorage.getItem('token'));
 		//console.log(this.state.redirect);
 		alert('Logged out of the session!!')
-		this.setState({ redirect : true});
-		console.log(this.state.redirect);
+		this.props.history.push('/');
     }
 	
 	delete = (event)=> {
@@ -58,9 +61,14 @@ export default class Profile extends Component {
         });
 
 	}
+
 	
 	update = (event) => {
 		this.props.history.push('/update');
+	}
+
+	register = (event) => {
+		this.props.history.push('/register');
 	}
 
   	render() {
@@ -87,7 +95,7 @@ export default class Profile extends Component {
 											PROFILE	
 										</NavLink> 
 									</Col>
-									<Col span={3}></Col>
+									<Col span={1}></Col>
 
 									<Col span={3}>
 										<Button type="primary" 
@@ -129,6 +137,15 @@ export default class Profile extends Component {
 											Show Profile
 										</Button>
 									</Col>
+									<Col span={2}>
+										<Button type="primary" 
+											htmlType="submit" 
+											className="login-form-button"
+											onClick={this.register}
+										>
+											Registration
+										</Button>
+									</Col>
 								</Row>
 							</div>
 						</Header>
@@ -137,13 +154,15 @@ export default class Profile extends Component {
 			<Form  className="login-form">
 
 				<div>
-					<Card title="PROFILE DATA" style={{ width: 300 }}>
+					<Card title="PROFILE DATA" style={{ width: 600, height :600  }}>
+					<Avatar src={"data:image/jpeg;base64,"+this.state.profile_data.image} />
 						<p>{this.state.profile_data.first_name}</p>
 						<p>{this.state.profile_data.last_name}</p>
 						<p>{this.state.profile_data.email}</p>
 						<p>{this.state.profile_data.contact}</p>
 						<p>{this.state.profile_data.address}</p>
 					</Card>
+					<img ng-src={"data:image/jpeg;base64,"+this.state.profile_data.image} />
 				</div>
 			</Form>
 		</div>

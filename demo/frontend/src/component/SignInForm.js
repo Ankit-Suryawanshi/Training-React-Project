@@ -1,12 +1,14 @@
 import React from 'react';
 import '../index.css'
 import {NavLink } from 'react-router-dom';
-import { Form, Input, Button, Icon, Layout, Row, Col, Avatar, Carousel} from 'antd';
+import { Form, Button, Icon, Layout, Row, Col, Avatar, Carousel} from 'antd';
 import {reduxForm, Field} from 'redux-form';
+import Avtar from './Avtar';
 const { Header, Footer, Content } = Layout;
 
 export function SignInForm(props)  {
     const { handleSubmit } = props;
+
         return ( 
             <div>
                 <Layout>
@@ -76,7 +78,9 @@ export function SignInForm(props)  {
                             <Col span={12} style={{padding : '10px'}}>
                                 <div>
                                     <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }} onSubmit={handleSubmit}>
-                                    
+                                        <Form.Item wrapperCol={{ span: 12, offset: 9 }}>
+                                            <Avtar />
+                                        </Form.Item>
                                         <Form.Item label="First-Name : "> 
                                             <Field className="input" name="first_name" component="input" type="text" placeholder="First Name"/>
                                         </Form.Item>
@@ -105,13 +109,7 @@ export function SignInForm(props)  {
                                            
                                             <Field className="input" name="password" component="input" type="password" placeholder="Password"/>
                                         </Form.Item>
-
-                                        <Form.Item label="Image">
-                                           
-                                            <Field className="input" name="image" component="input" type="file" placeholder="Select Image"/>
-                                        </Form.Item>
-
-                                        
+ 
                                         <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
                                             <Button type="primary" htmlType="submit"
                                             >
@@ -130,8 +128,8 @@ export function SignInForm(props)  {
                 </Layout>
 
             </div>
-      );
-  };
+        );
+    };
 
 export  function LogInForm(props)  {
     const { handleSubmit } = props;
@@ -240,9 +238,9 @@ export  function LogInForm(props)  {
 
 
  SignInForm = reduxForm({
-    form: 'signIn', 
+    form: 'signIn' 
   })(SignInForm);
 
   LogInForm = reduxForm({
-    form: 'logIn',
+    form: 'logIn'
   })(LogInForm);

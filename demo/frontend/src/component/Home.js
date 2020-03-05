@@ -1,7 +1,7 @@
 import React from 'react';  
 import {NavLink } from 'react-router-dom';
 import { Layout,Carousel, Avatar, Row, Col } from 'antd';
-const { Header, Footer, Content } = Layout;
+const { Header, Content } = Layout;
 
 export const home = (    
     <div>
