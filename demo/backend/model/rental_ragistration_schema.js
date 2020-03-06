@@ -37,7 +37,7 @@ const registration = new Schema({
         type : Number,
         default : 0 
     },
-    image : {
+    house_img : {
         type : String,
         required : 'image is required'
     } 

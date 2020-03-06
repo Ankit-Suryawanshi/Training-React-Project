@@ -4,8 +4,9 @@ import { RegistrationForm } from './RegistrationForm'
 export default class Registration extends Component {
     handleRegister = register => {
         console.log(register);
-        console.log(localStorage.getItem('image'));
-        register = {...register,image : localStorage.getItem('image'), token : localStorage.getItem('token')};
+        console.log(localStorage.getItem('house_img'));
+        register = {...register, image : localStorage.getItem('house_img')};
+        register = {...register, token : localStorage.getItem('token')};
         localStorage.removeItem('image');
         axios.post('http://localhost:8000/api/registration',{register})
           .then(res=>{console.log(res);

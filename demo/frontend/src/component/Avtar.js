@@ -46,7 +46,7 @@ class Avatar extends React.Component {
     const uploadButton = (
       <div>
         {this.state.loading ? <LoadingOutlined /> : <PlusOutlined />}
-        <div className="ant-upload-text">Upload</div>
+        <div className="ant-upload-text">Upload Home Image</div>
       </div>
     );
     const { imageUrl } = this.state;
@@ -55,7 +55,7 @@ class Avatar extends React.Component {
       let base64url =imageUrl.base64;
       let str = imageUrl.split(',');
       console.log(str[1]); 
-      localStorage.setItem('image',str[1]);
+      localStorage.setItem('house_img',str[1]);
     }
     return (
       

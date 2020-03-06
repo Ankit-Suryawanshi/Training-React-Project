@@ -1,16 +1,21 @@
 const Registration = require('../model/rental_ragistration_schema');
-
+const Window = require('window');
+const window = new Window();
 const RentalRegistrationController = {
     registration(req,res) {
-        if(req.body.token == null) {
+        console.log('At server');
+        console.log(req.body.register);
+        console.log(req.body.register.token);
+        if(req.body.register.token === null) {
             res.status(400).json({
                 error : 'You have to signup or login.'
             })
         }
         else {
-            const token = req.body.token;
+            console.log(req.body.register)
+            const token = req.body.register.token;
             const base64url = token.split('.')[1];
-            const decodedvalue = Json.parse(window.atob(base64url));
+            const decodedvalue = JSON.parse(window.atob(base64url));
             const id = decodedvalue.id;
             const newRegistration = new Registration({
                 _id : id,
@@ -31,7 +36,7 @@ const RentalRegistrationController = {
                 total_floor_size : req.body.register.total_floor_size,
                 rent : req.body.register.rent,
                 deposite : req.body.register.deposite,
-                image : req.body.register.image 
+                house_img : req.body.register.image 
             })
             newRegistration.save((err,data)=> {
                 if(err) {

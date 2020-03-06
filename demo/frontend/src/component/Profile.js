@@ -41,6 +41,7 @@ export default class Profile extends Component {
     logOut = (event)=>{
 		console.log('Log out');
 		localStorage.removeItem('token');
+		localStorage.clear();
 		//console.log(localStorage.getItem('token'));
 		//console.log(this.state.redirect);
 		alert('Logged out of the session!!')
