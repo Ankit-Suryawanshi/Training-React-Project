@@ -3,14 +3,13 @@ import 'antd/dist/antd.css';
 import '../index.css';
 import axios from 'axios';
 import { LogInForm} from './SignInForm'
-import { Map, GoogleApiWrapper } from 'google-maps-react';
-const mapStyles = {
-	width: '100%',
-	height: '100%'
-  };
+import { Modal, Button } from 'antd';
+
+
 
 export class Login extends Component {
 
+	
 	handleLogIn = (user)=> {
         axios.post('http://localhost:8000/api/login',{user})
 		.then(res=>{console.log(res);
@@ -18,7 +17,14 @@ export class Login extends Component {
 			console.log(res.data.message)
           	localStorage.setItem('token',res.data.token);
 			console.log(localStorage.getItem('token'));
-			this.props.history.push('/profile');
+			if (res.data.user.role === 'Landlords') {
+				console.log(res.data.user.role);
+				this.props.history.push('/profile');
+			}
+			else {
+				console.log(res.data.user.role)
+				this.props.history.push('/dashbord')
+			}
 		
         })
         .catch(function(err){
@@ -29,20 +35,13 @@ export class Login extends Component {
     render() {
     return (
       	<div className="App">
-        	<LogInForm onSubmit={this.handleLogIn} />
-			<Map
-				google={this.props.google}
-				zoom={14}
-				style={mapStyles}
-				initialCenter={{
-				lat: -1.2884,
-				lng: 36.8233
-				}}
-			/>
+		
+        	{/*<LogInForm onSubmit={this.handleLogIn} />
+			*/}
       	</div>
     );
   }
 }
-export default GoogleApiWrapper({
+/*export default GoogleApiWrapper({
 	apiKey: 'AIzaSyDYFVNNlOY9sXtICZLMc90CEADe9DjM990'
-  })(Login);
+  })(Login);*/

@@ -3,17 +3,40 @@ import 'antd/dist/antd.css';
 import '../index.css'
 import {NavLink } from 'react-router-dom';
 import Update from './Update';
-import { Form, Card, Button, Icon, Layout, Row, Col, Avatar, Carousel} from 'antd';
+import { Form, Card, Button, Icon, Layout, Row, Col, Avatar, Carousel, Modal, 	} from 'antd';
 import { Redirect } from 'react-router-dom';
+import { ExtraInfo } from './SignInForm'
 import axios from 'axios';
 import RegistrationForm from './Registration';
+import NavBar from './NavBar.js'
 const { Header, Footer, Content } = Layout;
 const img = '/home/rails/Downloads/bestpeers.png';
 
 export default class Profile extends Component {
     state = {
-        profile_data : '', 
+		profile_data : '', 
+		visible1 : false,
     }
+
+	showModal1 = () => {
+		this.setState({
+		visible1: true,
+		});
+	};
+
+	handleOk1 = e => {
+		console.log(e);
+		this.setState({
+		visible1: false,
+		});
+	};
+
+	handleCancel1 = e => {
+		console.log(e);
+		this.setState({
+		visible1: false,
+		});
+	};
 
     submitData = (event)=> {
         event.preventDefault();
@@ -63,6 +86,17 @@ export default class Profile extends Component {
 
 	}
 
+	handleExtraInfo= info =>{
+		info = {...info,token:localStorage.getItem('token')};
+		axios.post("http://localhost:8000/api/moreinfo",{info})
+			.then(res=>{
+				console.log(res.data.message);
+				console.log('Data is inserted')})
+			.catch(function(err){
+				console.log(err);
+			})
+	}
+
 	
 	update = (event) => {
 		this.props.history.push('/update');
@@ -72,15 +106,37 @@ export default class Profile extends Component {
 		this.props.history.push('/register');
 	}
 
+	multipleimage = (event) => {
+		this.props.history.push('/multipleimage');
+	}
+
   	render() {
+		if(this.state.profile_data != '')
+		{
+			return (
+				<div>
+					<Card title="PROFILE DATA" style={{ width: 600, height :600  }}>
+					<Avatar src={"data:image/jpeg;base64,"+this.state.profile_data.image} />
+						<p>{this.state.profile_data.first_name}</p>
+						<p>{this.state.profile_data.last_name}</p>
+						<p>{this.state.profile_data.email}</p>
+						<p>{this.state.profile_data.contact}</p>
+						<p>{this.state.profile_data.address}</p>
+					</Card>
+					<img ng-src={"data:image/jpeg;base64,"+this.state.profile_data.image} />
+				</div>
+			)
+		}
 		return (
 			<div>
+				
 				<div>
 					<Layout>
 						<Header >
 							<div>
+								
 								<Row>
-									<Col span={3}>
+									<Col span={2}>
 										<NavLink to="/" exact activeStyle={  
 											{color:'red'}  
 										}> 
@@ -88,7 +144,7 @@ export default class Profile extends Component {
 											HOME	
 										</NavLink> 
 									</Col>
-									<Col span={3}>
+									<Col span={2}>
 										<NavLink to="/profile" exact activeStyle={  
 											{color:'yellow'}  
 										}> 
@@ -138,7 +194,8 @@ export default class Profile extends Component {
 											Show Profile
 										</Button>
 									</Col>
-									<Col span={2}>
+									<Col span={1}></Col>
+									<Col span={3}>
 										<Button type="primary" 
 											htmlType="submit" 
 											className="login-form-button"
@@ -147,6 +204,30 @@ export default class Profile extends Component {
 											Registration
 										</Button>
 									</Col>
+									<Col span={3}>
+										<Button type="primary" 
+											htmlType="submit" 
+											className="login-form-button"
+											onClick={this.multipleimage}
+										>
+											Image Upload
+										</Button>
+									</Col>
+									<Col span={1}></Col>
+									<Col span={3}>
+										<Button type="primary" onClick={this.showModal1}>
+											Extra Info..
+										</Button>
+										<Modal
+										title={<h2>Add Extra Details of Your Property To Attract the Tenants</h2>}
+										visible={this.state.visible1}
+										onOk={this.handleOk1}
+										onCancel={this.handleCancel1}
+										okButtonProps={{ disabled: true }}
+										>
+											<ExtraInfo onSubmit={this.handleExtraInfo}/>
+										</Modal>
+									</Col>
 								</Row>
 							</div>
 						</Header>
@@ -154,17 +235,7 @@ export default class Profile extends Component {
 				</div>
 			<Form  className="login-form">
 
-				<div>
-					<Card title="PROFILE DATA" style={{ width: 600, height :600  }}>
-					<Avatar src={"data:image/jpeg;base64,"+this.state.profile_data.image} />
-						<p>{this.state.profile_data.first_name}</p>
-						<p>{this.state.profile_data.last_name}</p>
-						<p>{this.state.profile_data.email}</p>
-						<p>{this.state.profile_data.contact}</p>
-						<p>{this.state.profile_data.address}</p>
-					</Card>
-					<img ng-src={"data:image/jpeg;base64,"+this.state.profile_data.image} />
-				</div>
+				
 			</Form>
 		</div>
 		);

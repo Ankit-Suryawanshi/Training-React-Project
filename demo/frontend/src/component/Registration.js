@@ -5,7 +5,7 @@ export default class Registration extends Component {
     handleRegister = register => {
         console.log(register);
         console.log(localStorage.getItem('house_img'));
-        register = {...register, image : localStorage.getItem('house_img')};
+        register = {...register, image : localStorage.getItem('image')};
         register = {...register, token : localStorage.getItem('token')};
         localStorage.removeItem('image');
         axios.post('http://localhost:8000/api/registration',{register})

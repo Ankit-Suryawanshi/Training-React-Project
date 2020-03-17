@@ -16,4 +16,16 @@ router.post('/updatedata',UserController.updatedata);
 
 router.post('/registration',RetalRegistrationController.registration);
 
+router.post('/multipleimage',RetalRegistrationController.multipleimage);
+
+router.get('/propertydata',RetalRegistrationController.propertydata);
+
+router.get('/moreinfoget/:id',RetalRegistrationController.moreinfoget);
+
+router.get('/moreimage/:id',RetalRegistrationController.moreimage);
+
+router.post('/moreinfo',RetalRegistrationController.moreinfo);
+
+router.get('/extrainfoget/:id',RetalRegistrationController.extrainfoget);
+
 module.exports = router;

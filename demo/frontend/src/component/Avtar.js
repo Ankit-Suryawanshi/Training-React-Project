@@ -26,6 +26,7 @@ class Avatar extends React.Component {
   };
 
   handleChange = info => {
+    console.log(info.file.originFileObj);
     if (info.file.status === 'uploading') {
       //console.log(info);
       this.setState({ loading: true });
@@ -46,16 +47,17 @@ class Avatar extends React.Component {
     const uploadButton = (
       <div>
         {this.state.loading ? <LoadingOutlined /> : <PlusOutlined />}
-        <div className="ant-upload-text">Upload Home Image</div>
+        <div className="ant-upload-text">Upload Image</div>
       </div>
     );
     const { imageUrl } = this.state;
+    console.log('Image Url :' +imageUrl);
     if(imageUrl != undefined) {
       console.log(imageUrl.base64)
       let base64url =imageUrl.base64;
       let str = imageUrl.split(',');
       console.log(str[1]); 
-      localStorage.setItem('house_img',str[1]);
+      localStorage.setItem('image',str[1]);
     }
     return (
       
@@ -67,10 +69,12 @@ class Avatar extends React.Component {
           action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
           beforeUpload={beforeUpload}
           onChange={this.handleChange}
-          
+          multiple={false}
         >
           {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
         </Upload>
+
+        
     );
   }
 }

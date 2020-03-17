@@ -23,7 +23,7 @@ code {
   left: 45%;
 }
 .signup-div {
-  padding: 5px;
+  padding: 2px;
   margin: 10px;
   border: 1px solid black;
 }
@@ -36,3 +36,25 @@ code {
   background-color: #3CBC8D;
 
 }
+
+
+.row {
+  display: table;
+  width: 100%;
+}
+.column {
+  display: table-cell;
+  padding: 10px;
+   /* Should be removed. Only for demonstration */
+}
+
+.column1 {
+  width: 30%;
+}
+
+.column2 {
+  width: 70%;
+  position: relative;
+}
+
+/* Clear floats after the columns */

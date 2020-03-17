@@ -48,6 +48,7 @@ const UserController = {
                 token,
                 user : {
                     _id : user._id,
+                    role : user.role
                 }
             })
             

@@ -4,6 +4,11 @@ import {NavLink } from 'react-router-dom';
 import { Form, Button, Icon, Layout, Row, Col, Avatar, Carousel} from 'antd';
 import {reduxForm, Field} from 'redux-form';
 import Avtar from './Avtar';
+import { UserOutlined } from '@ant-design/icons';
+import MoreInfo from './MoreInfo';
+
+
+
 const { Header, Footer, Content } = Layout;
 
 export function SignInForm(props)  {
@@ -12,70 +17,10 @@ export function SignInForm(props)  {
         return ( 
             <div>
                 <Layout>
-                    <Header >
-                        <div>
-                            <Row>
-                                <Col span={3}>
-                                    <NavLink to="/" exact activeStyle={  
-                                        {color:'green'}  
-                                    }> 
-                                        <Avatar>HOME</Avatar>
-                                        HOME	
-                                    </NavLink> 
-                                </Col>
-                                <Col span={3}>
-                                    <NavLink to="/login" exact activeStyle={  
-                                        {color:'green'}  
-                                    }> 
-                                        <Avatar>LOGIN</Avatar>
-                                        LOGIN	
-                                    </NavLink> 
-                                </Col>
-                                <Col span={3}>
-                                    <NavLink to="/signup1"  activeStyle={  
-                                        {color:'magenta'}  
-                                    }>	
-                                        <Avatar>SIGNUP</Avatar>
-                                        SIGNUP  
-                                    </NavLink>
-                                </Col>
-                            </Row>
-                        </div>
-                    </Header>
+                  
                     <Content style={{padding : '2px'}}>
-                        <Row>
-                            <Col span={12}>
-                                <Carousel autoplay>
-                                    <div>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/UUYEwxEZfKjrarbCDBBf.jpg" 
-                                            style={{height : '200%', width : '100%'}}
-                                        />
-                                    </div>
-                                    <div>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/rdDIHRctzBPCgOiKAKDG.jpg" 
-                                            style={{height : '20%', width : '100%'}}
-                                        />
-                                    </div>
-                                    <div>
-                                    <h3>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/dqHtpdbLPSTUHVYZBUGV.jpg"
-                                            style={{height : '20%', width : '100%'}}
-                                        />
-                                    </h3>
-                                    </div>
-                                    <div>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/bVmfUDTcAYoDtGpRwbRH.jpg"
-                                            style={{height : '20%', width : '100%'}}
-                                        />
-                                    </div>
-                                    <div>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/xMreRRJlTOZjLBetFzLN.jpg"
-                                            style={{height : '100%', width : '100%'}}
-                                        />
-                                    </div>
-				                </Carousel>  
-                            </Col>
-                            <Col span={12} style={{padding : '10px'}}>
+                        <Row>    
+                            <Col span={24} style={{padding : '10px'}}>
                                 <div>
                                     <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }} onSubmit={handleSubmit}>
                                         <Form.Item wrapperCol={{ span: 12, offset: 9 }}>
@@ -109,8 +54,17 @@ export function SignInForm(props)  {
                                            
                                             <Field className="input" name="password" component="input" type="password" placeholder="Password"/>
                                         </Form.Item>
+
+                                        <Form.Item label="Role  ">
+                                           
+                                            <Field className="input" name="role" component="select" placeholder="Role">
+                                                <option value=""  selected disabled>Select Role</option>
+                                                <option value="Landlords">LandLords</option>
+                                                <option value="Tenant">Tenant</option>
+                                            </Field>
+                                        </Form.Item>
  
-                                        <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
+                                        <Form.Item wrapperCol={{ span: 12, offset: 9 }}>
                                             <Button type="primary" htmlType="submit"
                                             >
                                                 Submit
@@ -136,70 +90,20 @@ export  function LogInForm(props)  {
         return ( 
             <div>
                 <Layout>
-                    <Header >
+                    
                         <div>
                             <Row>
-                                <Col span={3}>
-                                    <NavLink to="/" exact activeStyle={  
-                                        {color:'green'}  
-                                    }> 
-                                        <Avatar>HOME</Avatar>
-                                        HOME	
-                                    </NavLink> 
-                                </Col>
-                                <Col span={3}>
-                                    <NavLink to="/login" exact activeStyle={  
-                                        {color:'green'}  
-                                    }> 
-                                        <Avatar>LOGIN</Avatar>
-                                        LOGIN	
-                                    </NavLink> 
-                                </Col>
-                                <Col span={3}>
-                                    <NavLink to="/signup1"  activeStyle={  
-                                        {color:'magenta'}  
-                                    }>	
-                                        <Avatar>SIGNUP</Avatar>
-                                        SIGNUP  
-                                    </NavLink>
-                                </Col>
+                                <Col span={10}></Col>
+                                <Col span={4}>    <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} /></Col>
+                                <Col span={10}></Col>
                             </Row>
                         </div>
-                    </Header>
+                    
                     <Content style={{padding : '2px'}}>
                         <Row>
-                            <Col span={12}>
-                                <Carousel autoplay>
-                                    <div>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/UUYEwxEZfKjrarbCDBBf.jpg" 
-                                            style={{height : '200%', width : '100%'}}
-                                        />
-                                    </div>
-                                    <div>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/rdDIHRctzBPCgOiKAKDG.jpg" 
-                                            style={{height : '20%', width : '100%'}}
-                                        />
-                                    </div>
-                                    <div>
-                                    <h3>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/dqHtpdbLPSTUHVYZBUGV.jpg"
-                                            style={{height : '20%', width : '100%'}}
-                                        />
-                                    </h3>
-                                    </div>
-                                    <div>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/bVmfUDTcAYoDtGpRwbRH.jpg"
-                                            style={{height : '20%', width : '100%'}}
-                                        />
-                                    </div>
-                                    <div>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/xMreRRJlTOZjLBetFzLN.jpg"
-                                            style={{height : '100%', width : '100%'}}
-                                        />
-                                    </div>
-				                </Carousel>  
-                            </Col>
-                            <Col span={12} style={{padding : '10px'}}>
+                            
+                                
+                            <Col span={24} style={{padding : '10px'}}>
                                 <div>
                                     <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }} onSubmit={handleSubmit}>
                                     
@@ -215,7 +119,7 @@ export  function LogInForm(props)  {
                                                 component="input" type="password" placeholder="Password"/>
                                         </Form.Item>
                                         
-                                        <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
+                                        <Form.Item wrapperCol={{ span: 12, offset: 10 }}>
                                             <Button type="primary" htmlType="submit"
                                                 
                                             >
@@ -236,11 +140,37 @@ export  function LogInForm(props)  {
       );
   };
 
+export function ExtraInfo(props) {
+    const {handleSubmit} = props;
+    return (
+        <div>
+            <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }} onSubmit={handleSubmit}>
+                <Form.Item label="Add All Here : "> 
+                    <Field className="input" name="more_info" component="textarea" 
+                        type="text" placeholder="Add all genuine info only.."
+                        rows="8" cols="15"
+                    />
+                </Form.Item>
+                <Form.Item wrapperCol={{ span: 12, offset: 10 }}>
+                    <Button type="primary" htmlType="submit"
+                        
+                    >
+                        Submit
+                    </Button>
+                </Form.Item>
+            </Form>
+        </div>
+    );
+}
 
- SignInForm = reduxForm({
+SignInForm = reduxForm({
     form: 'signIn' 
   })(SignInForm);
 
-  LogInForm = reduxForm({
+LogInForm = reduxForm({
     form: 'logIn'
   })(LogInForm);
+  
+ExtraInfo = reduxForm({
+    form : 'multiInfo'
+})(ExtraInfo);

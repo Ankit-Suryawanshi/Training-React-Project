@@ -14,74 +14,18 @@ export function RegistrationForm(props)  {
                 <Layout>
                     <Header >
                         <div>
-                            <Row>
-                                <Col span={3}>
-                                    <NavLink to="/" exact activeStyle={  
-                                        {color:'green'}  
-                                    }> 
-                                        <Avatar>HOME</Avatar>
-                                        HOME	
-                                    </NavLink> 
-                                </Col>
-                                <Col span={3}>
-                                    <NavLink to="/login" exact activeStyle={  
-                                        {color:'green'}  
-                                    }> 
-                                        <Avatar>LOGIN</Avatar>
-                                        LOGIN	
-                                    </NavLink> 
-                                </Col>
-                                <Col span={3}>
-                                    <NavLink to="/signup1"  activeStyle={  
-                                        {color:'magenta'}  
-                                    }>	
-                                        <Avatar>SIGNUP</Avatar>
-                                        SIGNUP  
-                                    </NavLink>
-                                </Col>
-                            </Row>
+                            <h1 style={{color : 'white'}}>
+                                Enter the Correct details of your Property
+                            </h1>
                         </div>
                     </Header>
                     <Content style={{padding : '2px'}}>
-                        <Row>
-                            <Col span={24}>
-                                <Carousel autoplay>
-                                    <div>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/UUYEwxEZfKjrarbCDBBf.jpg" 
-                                            style={{height : '200%', width : '100%'}}
-                                        />
-                                    </div>
-                                    <div>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/rdDIHRctzBPCgOiKAKDG.jpg" 
-                                            style={{height : '20%', width : '100%'}}
-                                        />
-                                    </div>
-                                    <div>
-                                    <h3>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/dqHtpdbLPSTUHVYZBUGV.jpg"
-                                            style={{height : '20%', width : '100%'}}
-                                        />
-                                    </h3>
-                                    </div>
-                                    <div>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/bVmfUDTcAYoDtGpRwbRH.jpg"
-                                            style={{height : '20%', width : '100%'}}
-                                        />
-                                    </div>
-                                    <div>
-                                        <img alt="Image loading..." src="https://gw.alipayobjects.com/zos/rmsportal/xMreRRJlTOZjLBetFzLN.jpg"
-                                            style={{height : '100%', width : '100%'}}
-                                        />
-                                    </div>
-				                </Carousel>  
-                            </Col>
-                        </Row>    
                         
                             <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }} onSubmit={handleSubmit}>
                                 
-                                
-                                
-                                    <Card title="Address Details" extra={<a href="#">More</a>} style={{ width: 600 }}>
+                                <Row>
+                                  <Col span={12}>
+                                    <Card title="Address Details" extra={<a href="#"></a>} style={{ width: 600 }}>
                                         <Form.Item label="Street : "> 
                                             <Field className="input" name="street" component="input" type="text" placeholder="Street"/>
                                         </Form.Item>
@@ -104,8 +48,9 @@ export function RegistrationForm(props)  {
                                             <Field className="input" name="country" component="input" type="text" placeholder="Country Name"/>
                                         </Form.Item>
                                     </Card>
-                                
-                                    <Card title="Property Details" extra={<a href="#">More</a>} style={{ width: 500 }}>
+                                  </Col>
+                                  <Col span={12}>
+                                    <Card title="Property Details" extra={<a href="#"></a>} style={{ width: 600 }}>
                                         <Form.Item label="No Of Rooms: " style={{marginLeft : '15px'}}> 
                                             <Field className="input" name="no_of_rooms" component="input" type="number" placeholder="No Of Rooms"/>
                                         </Form.Item>
@@ -141,8 +86,8 @@ export function RegistrationForm(props)  {
                                             Submit
                                         </Button>
                                     </Form.Item>
-                                   
-                                
+                                  </Col>
+                                </Row>
                             </Form>
                             
                             

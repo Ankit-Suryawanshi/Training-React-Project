@@ -37,11 +37,18 @@ const registration = new Schema({
         type : Number,
         default : 0 
     },
-    house_img : {
+    image : {
         type : String,
         required : 'image is required'
-    } 
+    },
+    extrainfo : {
+        type : String,
+        default : 'No Extra facilities'
+    }
+
 })
+
+
 
 const Registration = mongoose.model('Registration',registration);
 module.exports = Registration;
